@@ -25,7 +25,7 @@ struct OnboardingView: View {
                             RadialGradient(colors: [.red, .clear, .clear, .clear], center: .center, startRadius: 0, endRadius: UIScreen.main.bounds.width)
                         )
                         .padding(.bottom, -(UIScreen.main.bounds.width/2))
-                        .scaleEffect(isExpand ? 20 : 2)
+                        .scaleEffect(isExpand ? 200 : 2)
                 }
                 .frame(maxHeight: .infinity)
                 .zIndex(isExpand ? 2 : 0)
@@ -40,7 +40,7 @@ struct OnboardingView: View {
                         .font(.largeTitle.bold())
                         .multilineTextAlignment(.center)
                     
-                    Text("Smart gorgeous and fashionable collection makes you coll")
+                    Text("Smart gorgeous and fashionable collection makes you cool")
                         .multilineTextAlignment(.center)
                         .opacity(0.5)
                     

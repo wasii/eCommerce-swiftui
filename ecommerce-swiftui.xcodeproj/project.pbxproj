@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E209B3182C084B1A002C41FF /* Splash.swift in Sources */ = {isa = PBXBuildFile; fileRef = E209B3172C084B1A002C41FF /* Splash.swift */; };
+		E209B31A2C084BBD002C41FF /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E209B3192C084BBD002C41FF /* OnboardingView.swift */; };
 		E2BA6C7B2C0843CB00FD6165 /* ecommerce_swiftuiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BA6C7A2C0843CB00FD6165 /* ecommerce_swiftuiApp.swift */; };
 		E2BA6C7D2C0843CB00FD6165 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2BA6C7C2C0843CB00FD6165 /* ContentView.swift */; };
 		E2BA6C7F2C0843CD00FD6165 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2BA6C7E2C0843CD00FD6165 /* Assets.xcassets */; };
@@ -14,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E209B3172C084B1A002C41FF /* Splash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Splash.swift; sourceTree = "<group>"; };
+		E209B3192C084BBD002C41FF /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		E2BA6C772C0843CB00FD6165 /* ecommerce-swiftui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ecommerce-swiftui.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2BA6C7A2C0843CB00FD6165 /* ecommerce_swiftuiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ecommerce_swiftuiApp.swift; sourceTree = "<group>"; };
 		E2BA6C7C2C0843CB00FD6165 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,6 +36,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E209B3162C084B07002C41FF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E209B3172C084B1A002C41FF /* Splash.swift */,
+				E209B3192C084BBD002C41FF /* OnboardingView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		E2BA6C6E2C0843CB00FD6165 = {
 			isa = PBXGroup;
 			children = (
@@ -51,6 +64,7 @@
 		E2BA6C792C0843CB00FD6165 /* ecommerce-swiftui */ = {
 			isa = PBXGroup;
 			children = (
+				E209B3162C084B07002C41FF /* Views */,
 				E2BA6C7A2C0843CB00FD6165 /* ecommerce_swiftuiApp.swift */,
 				E2BA6C7C2C0843CB00FD6165 /* ContentView.swift */,
 				E2BA6C7E2C0843CD00FD6165 /* Assets.xcassets */,
@@ -138,6 +152,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2BA6C7D2C0843CB00FD6165 /* ContentView.swift in Sources */,
+				E209B31A2C084BBD002C41FF /* OnboardingView.swift in Sources */,
+				E209B3182C084B1A002C41FF /* Splash.swift in Sources */,
 				E2BA6C7B2C0843CB00FD6165 /* ecommerce_swiftuiApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

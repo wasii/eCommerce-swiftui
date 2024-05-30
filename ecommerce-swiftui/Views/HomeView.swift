@@ -9,6 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var currentCategory = "All"
+    @State private var productList = ProductsModel.get_product_data()
+    
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -30,9 +32,12 @@ struct HomeView: View {
                     
                     categoriesView
                         .zIndex(1)
+                    
+                    productListView
                 }
                 .padding()
             }
+            .scrollIndicators(.hidden)
         }
     }
     
@@ -58,14 +63,46 @@ struct HomeView: View {
                     .onTapGesture {
                         withAnimation {
                             currentCategory = item.title
+                            if item.title == "All" {
+                                productList = ProductsModel.get_product_data()
+                            } else {
+                                productList = ProductsModel.get_product_data().filter { $0.brand == item.title }
+                            }
                         }
                     }
                 }
             }
         }
     }
+    
+    var productListView: some View {
+        VStack {
+            ForEach(productList, id: \.id) { product in
+                VStack {
+                    AsyncImage(url: URL(string: product.images[0])) { image in
+                        image
+                            .resizable()
+                            .scaledToFill()
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .frame(width: UIScreen.main.bounds.width - 30, height: 200)
+                    .clipShape(Rectangle())
+                    
+                    Text(product.title)
+                        .font(.headline.bold())
+                    
+                    Text("$\(product.price)")
+                        .font(.callout)
+                }
+                .padding(.bottom)
+                .background(.gray.opacity(0.1))
+                .clipShape(RoundedRectangle(cornerRadius: 30))
+            }
+        }
+    }
 }
 
 #Preview {
-    ContentView()
+    HomeView()
 }

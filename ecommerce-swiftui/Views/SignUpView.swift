@@ -6,12 +6,18 @@
 //
 
 import SwiftUI
+import FirebaseCore
+import FirebaseAuth
+import FirebaseFirestore
 
 struct SignUpView: View {
     
     @State private var username: String = ""
     @State private var email: String = ""
     @State private var password: String = ""
+    
+    @State private var isLoading = false
+    @State private var isSignedIn = false
     
     @Environment(\.dismiss) var dismiss
     var body: some View {
@@ -67,15 +73,47 @@ struct SignUpView: View {
             Spacer()
             
             VStack(spacing: 15) {
-                Button {} label: {
-                    Text("Continue")
-                        .fontWeight(.medium)
+                Button {
+                    isLoading.toggle()
+                    Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+                        if error != nil {
+                            print(error?.localizedDescription ?? "")
+                            withAnimation {
+                                isLoading.toggle()
+                            }
+                        } else {
+                            isSignedIn = true
+                            let db = Firestore.firestore()
+                            let data: [String:Any] = [
+                                "username": username,
+                                "email": email
+                            ]
+                            
+                            UserDefaults.standard.setValue(result?.user.uid, forKey: "UID")
+                            UserDefaults.standard.setValue(username, forKey: "USERNAME")
+                            UserDefaults.standard.setValue(email, forKey: "EMAIL")
+    
+                            db.collection("users").addDocument(data: data)
+                            isLoading.toggle()
+                            isSignedIn = true
+                        }
+                    }
+                } label: {
+                    if isLoading {
+                        ProgressView()
+                    } else {
+                        Text("Continue")
+                            .fontWeight(.medium)
+                    }
                 }
                 .frame(maxWidth: .infinity)
                 .frame(height: 60)
                 .background(.red)
                 .clipShape(Capsule())
                 .foregroundStyle(Color.white)
+                .navigationDestination(isPresented: $isSignedIn) {
+                    ContentView()
+                }
                 
                 Button {
                     dismiss()

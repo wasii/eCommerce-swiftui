@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import FirebaseCore
+import FirebaseAuth
 
 struct Splash: View {
     
@@ -13,7 +15,11 @@ struct Splash: View {
     var body: some View {
         VStack {
             if isActive {
-                OnboardingView()
+                if Auth.auth().currentUser != nil {
+                    ContentView()
+                } else {
+                    OnboardingView()
+                }
             } else {
                 Text("NIKE")
                     .font(.largeTitle.bold())

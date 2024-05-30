@@ -15,7 +15,7 @@ struct OnboardingView: View {
     
     var body: some View {
         if isActive {
-            ContentView()
+            SignInView()
         } else {
             ZStack(alignment: .top) {
                 VStack {
@@ -27,7 +27,7 @@ struct OnboardingView: View {
                         .padding(.bottom, -(UIScreen.main.bounds.width/2))
                         .scaleEffect(isExpand ? 20 : 2)
                 }
-                .frame(height: .infinity)
+                .frame(maxHeight: .infinity)
                 .zIndex(isExpand ? 2 : 0)
                 
                 VStack(spacing: 15) {
